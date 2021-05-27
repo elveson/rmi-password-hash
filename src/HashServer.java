@@ -45,12 +45,15 @@ public class HashServer implements Hash {
         MessageDigest algoritmo = MessageDigest.getInstance("SHA3-256");
         byte[] hash = algoritmo.digest((password + SIMPLE_SALT).getBytes(StandardCharsets.UTF_8));
 
+        System.out.println();
         return bytesToHexa(hash);
     }
 
     public String passwordHash(String s) throws RemoteException, NoSuchAlgorithmException {
-        System.out.println("Executando metodo neste host");
-        return "O Hash da senha e: " + passToHash(s);
+        String hashingPassword = passToHash(s);
+        System.out.println(hashingPassword);
+
+        return "O Hash da senha e: " + hashingPassword;
     }
 
 }
